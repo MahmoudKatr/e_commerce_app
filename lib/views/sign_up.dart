@@ -13,6 +13,10 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final TextEditingController fullnameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController passwordCheckController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +61,7 @@ class _SignUpState extends State<SignUp> {
               height: 12,
             ),
             CustomTextFormField(
-              controller: fullnameController,
+              controller: emailController,
               hintText: 'Your Email',
               prefix: Icons.email,
             ),
@@ -65,7 +69,7 @@ class _SignUpState extends State<SignUp> {
               height: 12,
             ),
             CustomTextFormField(
-              controller: fullnameController,
+              controller: passwordController,
               hintText: 'Password',
               prefix: Icons.work,
             ),
@@ -73,7 +77,7 @@ class _SignUpState extends State<SignUp> {
               height: 12,
             ),
             CustomTextFormField(
-              controller: fullnameController,
+              controller: passwordCheckController,
               hintText: 'Password',
               prefix: Icons.lock,
             ),
