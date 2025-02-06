@@ -21,6 +21,12 @@ class CustomRow extends StatelessWidget {
         ),
         TextButton(
             onPressed: onPressed,
+            style: ButtonStyle(
+              padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets
+                  .zero), // Remove extra padding  // This Part CHAT GPT
+              minimumSize:
+                  MaterialStateProperty.all(Size(0, 0)), // Ensure compact size
+            ),
             child: Text(
               textButton,
               style: const TextStyle(color: Color(0xFF4591cb)),

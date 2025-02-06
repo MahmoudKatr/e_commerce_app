@@ -30,7 +30,7 @@ class _SignUpState extends State<SignUp> {
               height: 12,
             ),
             const Text(
-              'Let' 's Get Started ',
+              "Let's Get Started",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
