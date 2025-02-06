@@ -23,83 +23,85 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top: 120, left: 20, right: 20),
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                  'https://trangotech.com/blog/wp-content/uploads/2024/05/ecommerce-app-features.jpg'),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            const Text(
-              "Let's Get Started",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Color(0xff272f54),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(
+                    'https://trangotech.com/blog/wp-content/uploads/2024/05/ecommerce-app-features.jpg'),
               ),
-            ),
-            const Text(
-              'Create an new account',
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-                color: Color(0xff9f9da8),
+              const SizedBox(
+                height: 12,
               ),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            CustomTextFormField(
-              controller: fullnameController,
-              hintText: 'Full Name',
-              prefix: Icons.person,
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            CustomTextFormField(
-              controller: emailController,
-              hintText: 'Your Email',
-              prefix: Icons.email,
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            CustomTextFormField(
-              controller: passwordController,
-              hintText: 'Password',
-              prefix: Icons.work,
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            CustomTextFormField(
-              controller: passwordCheckController,
-              hintText: 'Password',
-              prefix: Icons.lock,
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            CustomButton(
-              text: 'Sign Up',
-              onPressed: () {},
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            CustomRow(
-              text: 'Do you have an Account?',
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const SignIn()));
-              },
-              textButton: 'Sign In',
-            )
-          ],
+              const Text(
+                "Let's Get Started",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff272f54),
+                ),
+              ),
+              const Text(
+                'Create an new account',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff9f9da8),
+                ),
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              CustomTextFormField(
+                controller: fullnameController,
+                hintText: 'Full Name',
+                prefix: Icons.person,
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              CustomTextFormField(
+                controller: emailController,
+                hintText: 'Your Email',
+                prefix: Icons.email,
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              CustomTextFormField(
+                controller: passwordController,
+                hintText: 'Password',
+                prefix: Icons.work,
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              CustomTextFormField(
+                controller: passwordCheckController,
+                hintText: 'Password',
+                prefix: Icons.lock,
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              CustomButton(
+                text: 'Sign Up',
+                onPressed: () {},
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              CustomRow(
+                text: 'Do you have an Account?',
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const SignIn()));
+                },
+                textButton: 'Sign In',
+              )
+            ],
+          ),
         ),
       ),
     );
