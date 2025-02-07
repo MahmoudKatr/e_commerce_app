@@ -55,6 +55,12 @@ class _SignUpState extends State<SignUp> {
                 height: 12,
               ),
               CustomTextFormField(
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'Please enter your full name.';
+                  }
+                  return null;
+                },
                 controller: fullnameController,
                 hintText: 'Full Name',
                 prefix: Icons.person,
@@ -63,6 +69,15 @@ class _SignUpState extends State<SignUp> {
                 height: 12,
               ),
               CustomTextFormField(
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'Please enter your email address.';
+                  }
+                  if (!value.contains('@') || !value.contains('.')) {
+                    return 'Please enter a valid email address.';
+                  }
+                  return null;
+                },
                 controller: emailController,
                 hintText: 'Your Email',
                 prefix: Icons.email,
@@ -71,6 +86,23 @@ class _SignUpState extends State<SignUp> {
                 height: 12,
               ),
               CustomTextFormField(
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'Please enter a password.';
+                  }
+                  if (value.length < 8) {
+                    return 'Password must be at least 8 characters long.';
+                  }
+                  if (!RegExp(
+                          r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
+                      .hasMatch(value)) {
+                    return 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
+                  }
+                  if (passwordController.text != passwordCheckController.text) {
+                    return 'Passwords do not match.';
+                  }
+                  return null;
+                },
                 controller: passwordController,
                 hintText: 'Password',
                 prefix: Icons.work,
@@ -79,6 +111,15 @@ class _SignUpState extends State<SignUp> {
                 height: 12,
               ),
               CustomTextFormField(
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'Please confirm your password.';
+                  }
+                  if (passwordController.text != passwordCheckController.text) {
+                    return 'Passwords do not match.';
+                  }
+                  return null;
+                },
                 controller: passwordCheckController,
                 hintText: 'Password',
                 prefix: Icons.lock,

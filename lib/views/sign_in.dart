@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/components/custom_button.dart';
+import 'package:ecommerce_app/components/custom_divider.dart';
 import 'package:ecommerce_app/components/custom_row.dart';
 import 'package:ecommerce_app/components/custom_text_button.dart';
 import 'package:ecommerce_app/components/custom_text_field.dart';
@@ -15,8 +16,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final TextEditingController fullnameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +56,15 @@ class _SignInState extends State<SignIn> {
                 height: 12,
               ),
               CustomTextFormField(
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'Please enter your email address.';
+                  }
+                  if (!value.contains('@') || !value.contains('.')) {
+                    return 'Please enter a valid email address.';
+                  }
+                  return null;
+                },
                 controller: emailController,
                 hintText: 'Your Email',
                 prefix: Icons.email,
@@ -63,7 +73,13 @@ class _SignInState extends State<SignIn> {
                 height: 12,
               ),
               CustomTextFormField(
-                controller: emailController,
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'Please enter a password.';
+                  }
+                  return null;
+                },
+                controller: passwordController,
                 hintText: 'Password',
                 prefix: Icons.lock,
               ),
@@ -77,25 +93,7 @@ class _SignInState extends State<SignIn> {
               const SizedBox(
                 height: 12,
               ),
-              Row(
-                children: [
-                  const Expanded(
-                      child: Divider(thickness: 1, color: Colors.grey)),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(
-                      "OR",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey[700],
-                      ),
-                    ),
-                  ),
-                  const Expanded(
-                      child: Divider(thickness: 1, color: Colors.grey)),
-                ],
-              ),
+              const CustomDivider(titleDivider: 'OR'),
               const SizedBox(height: 16),
               SocialLoginButton(
                 icon: FontAwesomeIcons.google,
