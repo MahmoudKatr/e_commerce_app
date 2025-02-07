@@ -17,6 +17,7 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController passwordCheckController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  bool isObsured = true;
 
   @override
   Widget build(BuildContext context) {
@@ -106,9 +107,19 @@ class _SignUpState extends State<SignUp> {
                     }
                     return null;
                   },
+                  isPassword: isObsured ? true : false,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isObsured = !isObsured;
+                      });
+                    },
+                    icon: Icon(
+                        isObsured ? Icons.visibility_off : Icons.visibility),
+                  ),
                   controller: passwordController,
                   hintText: 'Password',
-                  prefix: Icons.work,
+                  prefix: Icons.lock,
                 ),
                 const SizedBox(
                   height: 12,
@@ -124,6 +135,16 @@ class _SignUpState extends State<SignUp> {
                     }
                     return null;
                   },
+                  isPassword: isObsured ? true : false,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isObsured = !isObsured;
+                      });
+                    },
+                    icon: Icon(
+                        isObsured ? Icons.visibility_off : Icons.visibility),
+                  ),
                   controller: passwordCheckController,
                   hintText: 'Password',
                   prefix: Icons.lock,

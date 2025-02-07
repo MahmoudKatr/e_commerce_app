@@ -19,6 +19,7 @@ class _SignInState extends State<SignIn> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  bool isObsured = true;
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +83,16 @@ class _SignInState extends State<SignIn> {
                     }
                     return null;
                   },
+                  isPassword: isObsured ? true : false,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isObsured = !isObsured;
+                      });
+                    },
+                    icon: Icon(
+                        isObsured ? Icons.visibility_off : Icons.visibility),
+                  ),
                   controller: passwordController,
                   hintText: 'Password',
                   prefix: Icons.lock,
