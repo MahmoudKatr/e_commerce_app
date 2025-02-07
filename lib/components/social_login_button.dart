@@ -22,8 +22,8 @@ class SocialLoginButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-            side: const BorderSide(color: Colors.grey, width: 1),
+            borderRadius: BorderRadius.circular(4),
+            side: BorderSide(color: Colors.grey.shade300, width: 1),
           ),
           padding: const EdgeInsets.symmetric(vertical: 12),
         ),
@@ -39,9 +39,9 @@ class SocialLoginButton extends StatelessWidget {
             ),
             Text(
               text,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
-                color: Colors.black87,
+                color: Colors.grey.shade500,
                 fontWeight: FontWeight.bold,
               ),
             ),

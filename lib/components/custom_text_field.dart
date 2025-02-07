@@ -37,7 +37,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         onChanged: widget.onChanged,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade500),
+            borderSide: BorderSide(color: Colors.grey.shade300),
             borderRadius: BorderRadius.circular(2),
           ),
           focusedBorder: OutlineInputBorder(
@@ -62,7 +62,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           labelText: widget.label,
           hintStyle: const TextStyle(color: Colors.grey),
           filled: true,
-          fillColor: Colors.grey[100],
+          fillColor: Colors.white,
         ),
       ),
     );
