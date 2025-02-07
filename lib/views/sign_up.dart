@@ -24,7 +24,7 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.only(top: 120, left: 20, right: 20),
+        padding: const EdgeInsets.only(top: 150, left: 20, right: 20),
         child: SingleChildScrollView(
           child: Form(
             key: formKey,
@@ -32,8 +32,11 @@ class _SignUpState extends State<SignUp> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                      'https://trangotech.com/blog/wp-content/uploads/2024/05/ecommerce-app-features.jpg'),
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    width: 120,
+                    height: 120,
+                  ),
                 ),
                 const SizedBox(
                   height: 12,
@@ -150,14 +153,14 @@ class _SignUpState extends State<SignUp> {
                   prefix: Icons.lock,
                 ),
                 const SizedBox(
-                  height: 12,
+                  height: 18,
                 ),
                 CustomButton(
                   text: 'Sign Up',
                   onPressed: () {},
                 ),
                 const SizedBox(
-                  height: 12,
+                  height: 24,
                 ),
                 CustomRow(
                   text: 'Do you have an Account?',
