@@ -4,6 +4,7 @@ import 'package:ecommerce_app/components/custom_row.dart';
 import 'package:ecommerce_app/components/custom_text_button.dart';
 import 'package:ecommerce_app/components/custom_text_form_field.dart';
 import 'package:ecommerce_app/components/social_login_button.dart';
+import 'package:ecommerce_app/views/layout_screen.dart';
 import 'package:ecommerce_app/views/sign_up.dart';
 import 'package:flutter/material.dart';
 
@@ -104,7 +105,12 @@ class _SignInState extends State<SignIn> {
                 ),
                 CustomButton(
                   text: 'Sign In',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LayoutScreen()));
+                  },
                 ),
                 const SizedBox(
                   height: 12,
