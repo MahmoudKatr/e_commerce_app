@@ -47,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
           child: AnimatedScale(
             duration: const Duration(seconds: 2),
             scale: scale,
-            curve: Curves.fastEaseInToSlowEaseOut,
+            curve: Curves.bounceInOut,
             child: Image.asset(
               "assets/images/logo.png",
               width: 350,
