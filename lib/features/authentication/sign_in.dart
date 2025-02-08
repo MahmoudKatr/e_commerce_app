@@ -63,6 +63,7 @@ class _SignInState extends State<SignIn> {
                   height: 12,
                 ),
                 CustomTextFormField(
+                  prefixIconColor: Colors.grey.shade400,
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
                       return 'Please enter your email address.';
@@ -80,6 +81,7 @@ class _SignInState extends State<SignIn> {
                   height: 12,
                 ),
                 CustomTextFormField(
+                  prefixIconColor: Colors.grey.shade400,
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
                       return 'Please enter a password.';

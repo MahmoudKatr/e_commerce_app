@@ -77,6 +77,7 @@ class _SignUpState extends State<SignUp> {
                       height: 12,
                     ),
                     CustomTextFormField(
+                      prefixIconColor: Colors.grey.shade400,
                       validator: (value) {
                         if (value == null || value.trim().isEmpty) {
                           return 'Please enter your full name.';
@@ -91,6 +92,7 @@ class _SignUpState extends State<SignUp> {
                       height: 12,
                     ),
                     CustomTextFormField(
+                      prefixIconColor: Colors.grey.shade400,
                       validator: (value) {
                         if (value == null || value.trim().isEmpty) {
                           return 'Please enter your email address.';
@@ -108,6 +110,7 @@ class _SignUpState extends State<SignUp> {
                       height: 12,
                     ),
                     CustomTextFormField(
+                      prefixIconColor: Colors.grey.shade400,
                       validator: (value) {
                         if (value == null || value.trim().isEmpty) {
                           return 'Please enter a password.';
@@ -145,6 +148,7 @@ class _SignUpState extends State<SignUp> {
                       height: 12,
                     ),
                     CustomTextFormField(
+                      prefixIconColor: Colors.grey.shade400,
                       validator: (value) {
                         if (value == null || value.trim().isEmpty) {
                           return 'Please confirm your password.';

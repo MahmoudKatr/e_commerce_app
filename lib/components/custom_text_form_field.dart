@@ -8,18 +8,20 @@ class CustomTextFormField extends StatelessWidget {
   final IconData? prefix;
   final bool isPassword;
   final Widget? suffixIcon;
-  final TextEditingController controller;
+  final TextEditingController? controller;
+  final Color prefixIconColor;
 
   const CustomTextFormField(
       {super.key,
-      required this.controller,
+      this.controller,
       this.hintText,
       this.isPassword = false,
       this.label,
       this.onChanged,
       this.prefix,
       this.validator,
-      this.suffixIcon});
+      this.suffixIcon,
+      required this.prefixIconColor});
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +43,8 @@ class CustomTextFormField extends StatelessWidget {
           ),
           prefixIcon: prefix != null ? Icon(prefix) : null,
           suffixIcon: suffixIcon,
-          prefixIconColor: Colors.grey[400],
-          suffixIconColor: Colors.grey[400],
+          prefixIconColor: prefixIconColor,
+          suffixIconColor: Colors.grey,
           hintText: hintText,
           labelText: label,
           hintStyle: const TextStyle(color: Colors.grey),
