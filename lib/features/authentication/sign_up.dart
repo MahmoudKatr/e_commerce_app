@@ -1,23 +1,21 @@
 import 'package:ecommerce_app/components/custom_button.dart';
-import 'package:ecommerce_app/components/custom_divider.dart';
 import 'package:ecommerce_app/components/custom_row.dart';
-import 'package:ecommerce_app/components/custom_text_button.dart';
 import 'package:ecommerce_app/components/custom_text_form_field.dart';
-import 'package:ecommerce_app/components/social_login_button.dart';
-import 'package:ecommerce_app/views/layout_screen.dart';
-import 'package:ecommerce_app/views/sign_up.dart';
+import 'package:ecommerce_app/features/authentication/sign_in.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignUpState extends State<SignUp> {
+  final TextEditingController fullnameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController passwordCheckController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   bool isObsured = true;
 
@@ -65,6 +63,20 @@ class _SignInState extends State<SignIn> {
                 CustomTextFormField(
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
+                      return 'Please enter your full name.';
+                    }
+                    return null;
+                  },
+                  controller: fullnameController,
+                  hintText: 'Full Name',
+                  prefix: Icons.person,
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                CustomTextFormField(
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
                       return 'Please enter your email address.';
                     }
                     if (!value.contains('@') || !value.contains('.')) {
@@ -83,6 +95,18 @@ class _SignInState extends State<SignIn> {
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
                       return 'Please enter a password.';
+                    }
+                    if (value.length < 8) {
+                      return 'Password must be at least 8 characters long.';
+                    }
+                    if (!RegExp(
+                            r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
+                        .hasMatch(value)) {
+                      return 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
+                    }
+                    if (passwordController.text !=
+                        passwordCheckController.text) {
+                      return 'Passwords do not match.';
                     }
                     return null;
                   },
@@ -103,51 +127,51 @@ class _SignInState extends State<SignIn> {
                 const SizedBox(
                   height: 12,
                 ),
-                CustomButton(
-                  text: 'Sign In',
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LayoutScreen()));
+                CustomTextFormField(
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Please confirm your password.';
+                    }
+                    if (passwordController.text !=
+                        passwordCheckController.text) {
+                      return 'Passwords do not match.';
+                    }
+                    return null;
                   },
+                  isPassword: isObsured ? true : false,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isObsured = !isObsured;
+                      });
+                    },
+                    icon: Icon(
+                        isObsured ? Icons.visibility_off : Icons.visibility),
+                  ),
+                  controller: passwordCheckController,
+                  hintText: 'Password',
+                  prefix: Icons.lock,
                 ),
                 const SizedBox(
-                  height: 12,
+                  height: 18,
                 ),
-                const CustomDivider(titleDivider: 'OR'),
-                const SizedBox(height: 16),
-                SocialLoginButton(
-                  icon: 'assets/images/google.png',
-                  text: "Login with Google",
-                  onPressed: () {},
-                ),
-                const SizedBox(height: 12),
-                SocialLoginButton(
-                  icon: 'assets/images/facebook.png',
-                  text: "Login with Facebook",
+                CustomButton(
+                  text: 'Sign Up',
                   onPressed: () {},
                 ),
                 const SizedBox(
                   height: 24,
                 ),
-                CustomTextButton(
-                  text: 'Forgot Password',
-                  onPressed: () {},
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
                 CustomRow(
-                  text: "Don't have an account?",
+                  text: 'Do you have an Account?',
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const SignUp()));
+                            builder: (context) => const SignIn()));
                   },
-                  textButton: 'Register',
-                ),
+                  textButton: 'Sign In',
+                )
               ],
             ),
           ),
