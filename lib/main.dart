@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/cubit/layout_cubit/layout_cubit.dart';
-import 'package:ecommerce_app/features/authentication/sign_in.dart';
+import 'package:ecommerce_app/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SignIn(),
+        home: SplashScreen(),
       ),
     );
   }
