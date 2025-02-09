@@ -41,14 +41,14 @@ class UserData {
 
   factory UserData.fromJson(Map<String, dynamic> json) {
     return UserData(
-      id: json['id'],
-      name: json['name'],
-      email: json['email'],
-      phone: json['phone'],
-      image: json['image'],
-      points: json['points'],
-      credit: json['credit'],
-      token: json['token'],
+      id: json['id'] ?? 0, // Provide default value
+      name: json['name'] ?? "Unknown",
+      email: json['email'] ?? "Unknown",
+      phone: json['phone'] ?? "Unknown",
+      image: json['image'] ?? "", // Default empty string
+      points: json['points'] ?? 0, // Default to 0 if null
+      credit: json['credit'] ?? 0, // Default to 0 if null
+      token: json['token'] ?? "", // Default empty string
     );
   }
 }
