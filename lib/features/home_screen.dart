@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/components/custom_appbar.dart';
-import 'package:ecommerce_app/components/custom_card.dart';
 import 'package:ecommerce_app/components/custom_carsousel_slider.dart';
 import 'package:ecommerce_app/components/custom_category_body.dart';
 import 'package:ecommerce_app/components/custom_flash_scale_body.dart';
