@@ -1,8 +1,10 @@
 import 'package:ecommerce_app/components/custom_appbar.dart';
+import 'package:ecommerce_app/components/custom_card.dart';
 import 'package:ecommerce_app/components/custom_carsousel_slider.dart';
 import 'package:ecommerce_app/components/custom_category_body.dart';
 import 'package:ecommerce_app/components/custom_flash_scale_body.dart';
 import 'package:ecommerce_app/components/custom_mega_scale_body.dart';
+import 'package:ecommerce_app/components/custom_recomended_body.dart';
 import 'package:ecommerce_app/components/custom_row_text_button.dart';
 import 'package:flutter/material.dart';
 
@@ -54,6 +56,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         secondText: 'See More',
                       ),
                       const MegaSaleList(),
+                      const SizedBox(height: 16),
+                      const CustomRecomendedBody()
                     ],
                   ),
                 ),
