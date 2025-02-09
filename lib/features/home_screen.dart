@@ -2,6 +2,7 @@ import 'package:ecommerce_app/components/custom_appbar.dart';
 import 'package:ecommerce_app/components/custom_carsousel_slider.dart';
 import 'package:ecommerce_app/components/custom_category_body.dart';
 import 'package:ecommerce_app/components/custom_flash_scale_body.dart';
+import 'package:ecommerce_app/components/custom_mega_scale_body.dart';
 import 'package:ecommerce_app/components/custom_row_text_button.dart';
 import 'package:flutter/material.dart';
 
@@ -46,7 +47,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       CustomCategoryBody(),
                       const CustomRowTextButton(
                           firstText: 'Flash Sale', secondText: 'See More'),
-                      const FlashSaleList()
+                      const FlashSaleList(),
+                      const SizedBox(height: 16),
+                      const CustomRowTextButton(
+                        firstText: 'Mega Sale',
+                        secondText: 'See More',
+                      ),
+                      const MegaSaleList(),
                     ],
                   ),
                 ),

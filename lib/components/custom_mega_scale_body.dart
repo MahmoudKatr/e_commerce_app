@@ -1,8 +1,8 @@
 import 'package:ecommerce_app/components/custom_card.dart';
 import 'package:flutter/material.dart';
 
-class FlashSaleList extends StatelessWidget {
-  const FlashSaleList({super.key});
+class MegaSaleList extends StatelessWidget {
+  const MegaSaleList({super.key});
 
   final List<Map<String, dynamic>> products = const [
     {
