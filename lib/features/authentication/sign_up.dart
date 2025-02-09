@@ -21,6 +21,7 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController passwordCheckController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   bool isObsured = true;
+  bool isObsuredConfirm = true;
 
   @override
   Widget build(BuildContext context) {
@@ -159,14 +160,14 @@ class _SignUpState extends State<SignUp> {
                         }
                         return null;
                       },
-                      isPassword: isObsured ? true : false,
+                      isPassword: isObsuredConfirm ? true : false,
                       suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
-                            isObsured = !isObsured;
+                            isObsuredConfirm = !isObsuredConfirm;
                           });
                         },
-                        icon: Icon(isObsured
+                        icon: Icon(isObsuredConfirm
                             ? Icons.visibility_off
                             : Icons.visibility),
                       ),
