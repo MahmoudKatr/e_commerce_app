@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/components/custom_appbar.dart';
 import 'package:ecommerce_app/components/custom_carsousel_slider.dart';
+import 'package:ecommerce_app/components/custom_category_body.dart';
 import 'package:ecommerce_app/components/custom_row_text_button.dart';
 import 'package:flutter/material.dart';
 
@@ -42,6 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 firstText: 'Category',
                 secondText: 'More Category',
               ),
+              const SizedBox(
+                height: 16,
+              ),
+              CustomCategoryBody()
             ],
           ),
         ),
