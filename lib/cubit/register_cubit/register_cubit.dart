@@ -28,6 +28,7 @@ class RegisterCubit extends Cubit<RegisterCubitState> {
         },
       );
       RegisterModel registerModel = RegisterModel.fromJson(response.data);
+      print(response.data);
       emit(SignUpSuccessful(registerModel));
       print(registerModel.data!.email);
     } catch (e) {

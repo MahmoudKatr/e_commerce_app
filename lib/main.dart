@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/cubit/layout_cubit/layout_cubit.dart';
 import 'package:ecommerce_app/cubit/login_cubit/login_cubit.dart';
+import 'package:ecommerce_app/cubit/profile_cubit/profile_cubit.dart';
 import 'package:ecommerce_app/cubit/register_cubit/register_cubit.dart';
 import 'package:ecommerce_app/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LoginCubitCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ProfileCubit(),
         ),
       ],
       child: const MaterialApp(

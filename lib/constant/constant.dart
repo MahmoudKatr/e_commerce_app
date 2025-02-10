@@ -3,6 +3,7 @@ class ApiConstants {
   static var login = "$basUrl/login";
   static var register = "$basUrl/register";
   static var home = "$basUrl/home";
+  static var profile = "$basUrl/profile";
 }
 
 class DataIconCategories {

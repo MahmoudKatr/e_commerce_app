@@ -9,7 +9,8 @@ class CustomTextFormField extends StatelessWidget {
   final bool isPassword;
   final Widget? suffixIcon;
   final TextEditingController? controller;
-  final Color prefixIconColor;
+  final Color? prefixIconColor;
+  final bool isEnabled; // New parameter to enable/disable the text field
 
   const CustomTextFormField(
       {super.key,
@@ -21,7 +22,8 @@ class CustomTextFormField extends StatelessWidget {
       this.prefix,
       this.validator,
       this.suffixIcon,
-      required this.prefixIconColor});
+      this.prefixIconColor,
+      this.isEnabled = true}); // Default is enabled
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class CustomTextFormField extends StatelessWidget {
         obscureText: isPassword,
         validator: validator,
         onChanged: onChanged,
+        enabled: isEnabled, // Set the enabled property based on isEnabled
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey.shade300),
