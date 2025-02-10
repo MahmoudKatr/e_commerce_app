@@ -15,7 +15,7 @@ class LoginCubitCubit extends Cubit<LoginCubitState> {
     required String email,
     required String password,
   }) async {
-    emit(SignInLoading()); // Show loading state
+    emit(SignInLoading());
 
     try {
       var response = await Dio().post(
@@ -27,8 +27,9 @@ class LoginCubitCubit extends Cubit<LoginCubitState> {
       );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        UserData userModel = UserData.fromJson(response.data);
+        UserData userModel = UserData.fromJson(response.data['data']);
         emit(SignInSuccessful(userModel)); // Emit success state
+        print(userModel.email);
       } else {
         emit(SignInFailure("Unexpected error: ${response.statusCode}"));
       }
