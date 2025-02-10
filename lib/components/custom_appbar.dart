@@ -1,5 +1,7 @@
 import 'package:ecommerce_app/components/custom_text_form_field.dart';
+import 'package:ecommerce_app/features/authentication/sign_in.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
@@ -48,6 +50,18 @@ class CustomAppBar extends StatelessWidget {
               )
             ],
           ),
+          IconButton(
+              icon: const Icon(
+                Icons.output,
+                color: Colors.grey,
+              ),
+              onPressed: () async {
+                SharedPreferences pres = await SharedPreferences.getInstance();
+                await pres.remove('user_token');
+
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => const SignIn()));
+              }),
         ],
       ),
     );
