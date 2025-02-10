@@ -23,7 +23,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
             items: widget.images.map((image) {
               return ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Image.network(image,
+                child: Image.asset(image,
                     fit: BoxFit.fill, width: double.infinity),
               );
             }).toList(),

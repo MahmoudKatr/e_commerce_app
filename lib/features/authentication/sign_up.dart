@@ -30,8 +30,13 @@ class _SignUpState extends State<SignUp> {
         if (state is SignUpSuccessful) {
           ScaffoldMessenger.of(context)
               .showSnackBar(const SnackBar(content: Text("register Succeed")));
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const LayoutScreen()));
+          // Navigate to home screen after a small delay to avoid UI issues
+          Future.delayed(const Duration(milliseconds: 500), () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const LayoutScreen()),
+            );
+          });
         } else if (state is SignUpFailure) {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text("Error :${state.error} ")));

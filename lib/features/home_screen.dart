@@ -33,11 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       const SizedBox(height: 16),
                       const CustomCarouselSlider(
-                        images: [
-                          'https://www.pngplay.com/wp-content/uploads/6/E-Commerce-Icon-PNG-HD-Quality.png',
-                          'https://static.vecteezy.com/system/resources/thumbnails/010/974/057/small_2x/online-shopping-3d-illustration-shopping-online-store-for-sale-mobile-e-commerce-3d-background-buying-and-selling-concept-png.png',
-                          'https://static.vecteezy.com/system/resources/thumbnails/011/153/677/small/buy-button-e-commerce-3d-illustrations-png.png',
-                        ],
+                        images: ["assets/image.png", "assets/1.png"],
                       ),
                       const SizedBox(height: 16),
                       const CustomRowTextButton(

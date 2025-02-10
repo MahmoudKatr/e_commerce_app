@@ -15,6 +15,8 @@ class LoginCubitCubit extends Cubit<LoginCubitState> {
     required String email,
     required String password,
   }) async {
+    emit(SignInLoading()); // Show loading state
+
     try {
       var response = await Dio().post(
         ApiConstants.login,
@@ -25,29 +27,24 @@ class LoginCubitCubit extends Cubit<LoginCubitState> {
       );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // Successful registration
         UserData userModel = UserData.fromJson(response.data);
-        emit(SignInSuccessful(userModel));
+        emit(SignInSuccessful(userModel)); // Emit success state
       } else {
-        // Unexpected response
         emit(SignInFailure("Unexpected error: ${response.statusCode}"));
       }
     } on DioException catch (error) {
       if (error.response != null) {
         if (error.response!.statusCode == 400) {
-          emit(SignInFailure(
-              "Invalid registration data. Please check your inputs."));
+          emit(SignInFailure("Invalid login credentials. Try again."));
         } else if (error.response!.statusCode == 404) {
           emit(SignInFailure("Server not found. Try again later."));
-        } else if (error.response!.statusCode == 409) {
-          emit(SignInFailure("Email or phone number already exists."));
         } else if (error.response!.statusCode == 500) {
           emit(SignInFailure("Server error. Please try again later."));
         } else {
           emit(SignInFailure("Error: ${error.response!.statusCode}"));
         }
       } else {
-        emit(SignInFailure("Network error. Please check your connection."));
+        emit(SignInFailure("Network error. Check your connection."));
       }
     } catch (error) {
       emit(SignInFailure("An unexpected error occurred: $error"));

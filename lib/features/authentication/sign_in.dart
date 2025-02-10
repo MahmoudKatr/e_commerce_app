@@ -29,12 +29,17 @@ class _SignInState extends State<SignIn> {
       listener: (context, state) {
         if (state is SignInSuccessful) {
           ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text("Login Succeed")));
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const LayoutScreen()));
+              .showSnackBar(const SnackBar(content: Text("Login Succeeded")));
+          // Navigate to home screen after a small delay to avoid UI issues
+          Future.delayed(const Duration(milliseconds: 500), () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const LayoutScreen()),
+            );
+          });
         } else if (state is SignInFailure) {
           ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text("Error :${state.error} ")));
+              .showSnackBar(SnackBar(content: Text("Error: ${state.error}")));
         }
       },
       builder: (context, state) {
@@ -123,18 +128,22 @@ class _SignInState extends State<SignIn> {
                     ),
                     CustomButton(
                       text: 'Sign In',
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          final email = emailController.text;
-                          final password = passwordController.text;
-                          BlocProvider.of<LoginCubitCubit>(context)
-                              .userLogin(email: email, password: password);
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text("Form is not valid")));
-                        }
-                      },
+                      isLoading: state is SignInLoading,
+                      onPressed: state is SignInLoading
+                          ? null
+                          : () {
+                              if (formKey.currentState!.validate()) {
+                                final email = emailController.text;
+                                final password = passwordController.text;
+                                BlocProvider.of<LoginCubitCubit>(context)
+                                    .userLogin(
+                                        email: email, password: password);
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text("Form is not valid")));
+                              }
+                            },
                     ),
                     const SizedBox(
                       height: 12,

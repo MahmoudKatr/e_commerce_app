@@ -15,4 +15,4 @@ class SignInFailure extends LoginCubitInitial {
   SignInFailure(this.error);
 }
 
-class SignUpLoading extends LoginCubitInitial {}
+class SignInLoading extends LoginCubitInitial {}
