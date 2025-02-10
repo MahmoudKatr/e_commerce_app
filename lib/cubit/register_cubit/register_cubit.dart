@@ -1,8 +1,8 @@
-import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:ecommerce_app/constant/constant.dart';
 import 'package:ecommerce_app/model/api_register.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'register_state.dart';
 
@@ -20,7 +20,7 @@ class RegisterCubit extends Cubit<RegisterCubitState> {
         ApiConstants.register,
         data: {
           'name': name,
-          'phone': '01117871340',
+          'phone': '01117871350',
           'email': email,
           'password': password,
           "image":
@@ -28,6 +28,8 @@ class RegisterCubit extends Cubit<RegisterCubitState> {
         },
       );
       RegisterModel registerModel = RegisterModel.fromJson(response.data);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('user_token', registerModel.data!.token);
       print(response.data);
       emit(SignUpSuccessful(registerModel));
       print(registerModel.data!.email);

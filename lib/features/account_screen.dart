@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ecommerce_app/cubit/profile_cubit/profile_cubit.dart';
 import 'package:ecommerce_app/cubit/profile_cubit/profile_state.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -41,16 +42,21 @@ class _AccountScreenState extends State<AccountScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                      radius: 100.0,
-                      backgroundColor: Colors.grey.shade200,
-                      child: ClipOval(
-                        child: Image.network(
-                          state.profileModel.data!.image,
-                          fit: BoxFit.cover,
-                          width: 200.0,
-                          height: 200.0,
-                        ),
-                      )),
+                    radius: 100.0,
+                    backgroundColor: Colors.grey.shade200,
+                    child: ClipOval(
+                      child: CachedNetworkImage(
+                        imageUrl: state.profileModel.data!.image,
+                        placeholder: (context, url) =>
+                            const CircularProgressIndicator(),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                        fit: BoxFit.cover,
+                        width: 200.0,
+                        height: 200.0,
+                      ),
+                    ),
+                  ),
                   const SizedBox(height: 50),
                   CustomTextFormField(
                     isEnabled: true,
@@ -74,7 +80,6 @@ class _AccountScreenState extends State<AccountScreen> {
                   ),
                   const SizedBox(height: 25),
                   CustomButton(text: 'Save Changed', onPressed: () {})
-                  // Add more profile details here if needed
                 ],
               ),
             );

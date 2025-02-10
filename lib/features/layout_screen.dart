@@ -38,7 +38,7 @@ class LayoutScreen extends StatelessWidget {
               BottomNavigationBarItem(
                   icon: Icon(Icons.local_offer_outlined), label: 'offer'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: 'Accoutn'),
+                  icon: Icon(Icons.person), label: 'Account'),
             ],
           ),
         );

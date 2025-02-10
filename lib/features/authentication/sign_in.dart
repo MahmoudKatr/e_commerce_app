@@ -174,7 +174,7 @@ class _SignInState extends State<SignIn> {
                     CustomRow(
                       text: "Don't have an account?",
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const SignUp()));
