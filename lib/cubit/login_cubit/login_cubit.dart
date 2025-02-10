@@ -4,6 +4,7 @@ import 'package:ecommerce_app/constant/constant.dart';
 import 'package:ecommerce_app/model/api_login.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'login_state.dart';
 
@@ -28,8 +29,9 @@ class LoginCubitCubit extends Cubit<LoginCubitState> {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         LoginModel loginModel = LoginModel.fromJson(response.data);
-        emit(SignInSuccessful(loginModel)); // Emit success state
-        print(loginModel.data!.email);
+        emit(SignInSuccessful(loginModel));
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('user_token', loginModel.data!.token);
         print(loginModel.data!.token);
       } else {
         emit(SignInFailure("Unexpected error: ${response.statusCode}"));
