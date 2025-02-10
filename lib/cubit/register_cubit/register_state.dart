@@ -1,12 +1,11 @@
 part of 'register_cubit.dart';
 
-@immutable
-sealed class RegisterCubitState {}
+abstract class RegisterCubitState {}
 
 final class RegisterCubitInitial extends RegisterCubitState {}
 
 class SignUpSuccessful extends RegisterCubitState {
-  final UserModel user;
+  final RegisterModel user;
   SignUpSuccessful(this.user);
 }
 

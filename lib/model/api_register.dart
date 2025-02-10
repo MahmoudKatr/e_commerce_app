@@ -1,18 +1,18 @@
-class UserModel {
+class RegisterModel {
   final bool status;
   final String message;
   final UserData? data;
 
-  UserModel({
+  RegisterModel({
     required this.status,
     required this.message,
     this.data,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
-      status: json['status'],
-      message: json['message'],
+  factory RegisterModel.fromJson(Map<String, dynamic> json) {
+    return RegisterModel(
+      status: json['status'] ?? "",
+      message: json['message'] ?? "",
       data: json['data'] != null ? UserData.fromJson(json['data']) : null,
     );
   }
@@ -37,12 +37,12 @@ class UserData {
 
   factory UserData.fromJson(Map<String, dynamic> json) {
     return UserData(
-      name: json['name'],
-      phone: json['phone'],
-      email: json['email'],
-      id: json['id'],
-      image: json['image'],
-      token: json['token'],
+      name: json['name'] ?? "",
+      phone: json['phone'] ?? "",
+      email: json['email'] ?? "",
+      id: json['id'] ?? "",
+      image: json['image'] ?? "",
+      token: json['token'] ?? "",
     );
   }
 }

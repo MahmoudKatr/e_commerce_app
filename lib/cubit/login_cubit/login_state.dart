@@ -6,7 +6,7 @@ abstract class LoginCubitState {}
 class LoginCubitInitial extends LoginCubitState {}
 
 class SignInSuccessful extends LoginCubitInitial {
-  final UserData user;
+  final LoginModel user;
   SignInSuccessful(this.user);
 }
 

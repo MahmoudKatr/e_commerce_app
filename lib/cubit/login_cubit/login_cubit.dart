@@ -27,9 +27,10 @@ class LoginCubitCubit extends Cubit<LoginCubitState> {
       );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        UserData userModel = UserData.fromJson(response.data['data']);
-        emit(SignInSuccessful(userModel)); // Emit success state
-        print(userModel.email);
+        LoginModel loginModel = LoginModel.fromJson(response.data);
+        emit(SignInSuccessful(loginModel)); // Emit success state
+        print(loginModel.data!.email);
+        print(loginModel.data!.token);
       } else {
         emit(SignInFailure("Unexpected error: ${response.statusCode}"));
       }
