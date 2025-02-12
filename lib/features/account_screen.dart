@@ -37,50 +37,52 @@ class _AccountScreenState extends State<AccountScreen> {
             );
           } else if (state is ProfileLoaded) {
             return Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 100.0,
-                    backgroundColor: Colors.grey.shade200,
-                    child: ClipOval(
-                      child: CachedNetworkImage(
-                        imageUrl: state.profileModel.data!.image,
-                        placeholder: (context, url) =>
-                            const CircularProgressIndicator(),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
-                        fit: BoxFit.cover,
-                        width: 200.0,
-                        height: 200.0,
+              padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 16),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 100.0,
+                      backgroundColor: Colors.grey.shade200,
+                      child: ClipOval(
+                        child: CachedNetworkImage(
+                          imageUrl: state.profileModel.data!.image,
+                          placeholder: (context, url) =>
+                              const CircularProgressIndicator(),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                          fit: BoxFit.cover,
+                          width: 200.0,
+                          height: 200.0,
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 50),
-                  CustomTextFormField(
-                    isEnabled: true,
-                    prefix: Icons.person,
-                    prefixIconColor: Colors.grey.shade400,
-                    hintText: state.profileModel.data!.name,
-                  ),
-                  const SizedBox(height: 25),
-                  CustomTextFormField(
-                    isEnabled: true,
-                    prefix: Icons.email,
-                    prefixIconColor: Colors.grey.shade400,
-                    hintText: state.profileModel.data!.email,
-                  ),
-                  const SizedBox(height: 25),
-                  CustomTextFormField(
-                    isEnabled: false,
-                    prefix: Icons.person,
-                    prefixIconColor: Colors.grey.shade400,
-                    hintText: state.profileModel.data!.phone,
-                  ),
-                  const SizedBox(height: 25),
-                  CustomButton(text: 'Save Changed', onPressed: () {})
-                ],
+                    const SizedBox(height: 50),
+                    CustomTextFormField(
+                      isEnabled: true,
+                      prefix: Icons.person,
+                      prefixIconColor: Colors.grey.shade400,
+                      hintText: state.profileModel.data!.name,
+                    ),
+                    const SizedBox(height: 25),
+                    CustomTextFormField(
+                      isEnabled: true,
+                      prefix: Icons.email,
+                      prefixIconColor: Colors.grey.shade400,
+                      hintText: state.profileModel.data!.email,
+                    ),
+                    const SizedBox(height: 25),
+                    CustomTextFormField(
+                      isEnabled: false,
+                      prefix: Icons.person,
+                      prefixIconColor: Colors.grey.shade400,
+                      hintText: state.profileModel.data!.phone,
+                    ),
+                    const SizedBox(height: 25),
+                    CustomButton(text: 'Save Changed', onPressed: () {})
+                  ],
+                ),
               ),
             );
           } else if (state is ProfileError) {
