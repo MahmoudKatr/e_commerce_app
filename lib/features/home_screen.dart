@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/model/api_categories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ecommerce_app/components/custom_appbar.dart';
@@ -43,7 +44,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (state is HomeLoading) {
                         return const Center(child: CircularProgressIndicator());
                       } else if (state is HomeStateSuccessful) {
-                        // ✅ Extract banner images safely
                         List<String> bannerImages = state
                                 .homeModel.data?.banners
                                 ?.map((b) => b.image ?? "")
@@ -53,8 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             const SizedBox(height: 16),
                             CustomCarouselSlider(
-                              images:
-                                  bannerImages, // ✅ Pass API images to slider
+                              images: bannerImages,
                             ),
                             const SizedBox(height: 16),
                             const CustomRowTextButton(
@@ -78,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         );
                       } else {
-                        return Center(child: Text("Failed to load data"));
+                        return const Center(child: Text("Failed to load data"));
                       }
                     },
                   ),
