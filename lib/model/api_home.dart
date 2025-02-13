@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class HomeModel {
   bool? status;
   dynamic message;
