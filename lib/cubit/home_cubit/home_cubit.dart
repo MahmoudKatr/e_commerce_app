@@ -8,13 +8,33 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeStateInitial());
   static HomeCubit get(context) => BlocProvider.of(context);
   HomeModel? homeModel;
-  void getHomeDaata() async {
+  void getHomeData() async {
     try {
-      Response HomeResponse = await Dio().get(ApiConstants.home);
-      homeModel = HomeModel.fromJson(HomeResponse.data);
-    } on Exception {
-      emit(HomeStateError(
-          errorMessage: 'An error occurred while fetching data'));
+      emit(HomeLoading());
+      Response homeResponse = await Dio().get(ApiConstants.home);
+      if (homeResponse.statusCode == 200 || homeResponse.statusCode == 201) {
+        homeModel = HomeModel.fromJson(homeResponse.data);
+        emit(HomeStateSuccessful(homeModel!));
+      }
+    } on DioException catch (error) {
+      if (error.response != null) {
+        if (error.response!.statusCode == 400) {
+          emit(HomeStateError(
+              errorMessage: "Invalid login credentials. Try again."));
+        } else if (error.response!.statusCode == 404) {
+          emit(HomeStateError(
+              errorMessage: "Server not found. Try again later."));
+        } else if (error.response!.statusCode == 500) {
+          emit(HomeStateError(
+              errorMessage: "Server error. Please try again later."));
+        } else {
+          emit(HomeStateError(
+              errorMessage: "Error: ${error.response!.statusCode}"));
+        }
+      } else {
+        emit(HomeStateError(
+            errorMessage: "Network error. Check your connection."));
+      }
     }
   }
 }

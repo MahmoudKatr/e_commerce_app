@@ -4,9 +4,11 @@ abstract class HomeState {}
 
 class HomeStateInitial extends HomeState {}
 
+class HomeLoading extends HomeState {}
+
 class HomeStateSuccessful extends HomeState {
-  final HomeModel user;
-  HomeStateSuccessful(this.user);
+  final HomeModel homeModel; // ✅ Make sure this is defined correctly
+  HomeStateSuccessful(this.homeModel);
 }
 
 class HomeStateError extends HomeState {

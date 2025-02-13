@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/cubit/home_cubit/home_cubit.dart';
 import 'package:ecommerce_app/cubit/layout_cubit/layout_cubit.dart';
 import 'package:ecommerce_app/cubit/login_cubit/login_cubit.dart';
 import 'package:ecommerce_app/cubit/profile_cubit/profile_cubit.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ProfileCubit(),
         ),
+        BlocProvider(
+          create: (context) => HomeCubit(),
+        )
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

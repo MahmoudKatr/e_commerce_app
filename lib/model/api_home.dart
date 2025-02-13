@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 class HomeModel {
   bool? status;
   dynamic message;
@@ -79,9 +81,14 @@ class Products {
   });
 
   Products.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? '';
-    price = json['price'] ?? '';
-    oldPrice = json['old_price'] ?? '';
+    id = json['id'] ?? ''; // ✅ Ensure `price` is always treated as a `double`
+    price = (json['price'] is int)
+        ? (json['price'] as int).toDouble()
+        : json['price'] ?? 0.0;
+
+    oldPrice = (json['old_price'] is int)
+        ? (json['old_price'] as int).toDouble()
+        : json['old_price'] ?? 0.0;
     discount = json['discount'] ?? '';
     image = json['image'] ?? '';
     name = json['name'] ?? '';

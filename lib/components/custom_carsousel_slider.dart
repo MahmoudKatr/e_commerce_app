@@ -17,14 +17,21 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
     return Column(
       children: [
         SizedBox(
-          width: MediaQuery.of(context).size.width, // 🔹 Take full screen width
+          width: MediaQuery.of(context).size.width,
           height: 200,
           child: CarouselSlider(
             items: widget.images.map((image) {
               return ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Image.asset(image,
-                    fit: BoxFit.fill, width: double.infinity),
+                child: Image.network(
+                  image,
+                  fit: BoxFit.fill,
+                  width: double.infinity,
+                  errorBuilder: (context, error, stackTrace) => const Icon(
+                      Icons.broken_image,
+                      size: 50,
+                      color: Colors.grey),
+                ),
               );
             }).toList(),
             options: CarouselOptions(
@@ -52,7 +59,6 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
     );
   }
 
-  // 🔹 Custom Dot Indicator
   Widget _buildIndicator(int index) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
