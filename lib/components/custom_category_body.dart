@@ -1,4 +1,3 @@
-import 'package:dio/io.dart';
 import 'package:ecommerce_app/features/product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

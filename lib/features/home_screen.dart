@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/model/api_categories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ecommerce_app/components/custom_appbar.dart';
